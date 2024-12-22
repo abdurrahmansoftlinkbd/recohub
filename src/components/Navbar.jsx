@@ -48,7 +48,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box z-10  mt-3 w-52 p-2 shadow"
           >
             {links}
             {user && (
@@ -92,17 +92,7 @@ const Navbar = () => {
               </>
             )}
             {user ? (
-              <NavLink
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "font-bold underline"
-                      : "hover:underline font-medium"
-                  }`
-                }
-              >
-                Log out
-              </NavLink>
+              <Link className="hover:underline font-medium">Log out</Link>
             ) : (
               <NavLink
                 to="/login"
