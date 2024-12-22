@@ -5,7 +5,8 @@ import AuthContext from "../context/AuthContext";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, setUser, updateUserProfile, handleGoogleSignIn } =
+    useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -101,7 +102,7 @@ const Register = () => {
             </button>
             <div className="divider">OR</div>
             <button
-              //   onClick={handleGoogleSignIn}
+              onClick={handleGoogleSignIn}
               className="btn bg-base-200 hover:bg-base-100"
             >
               <FcGoogle className="text-2xl" /> Signup with Google
