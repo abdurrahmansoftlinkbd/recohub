@@ -19,6 +19,14 @@ const Navbar = () => {
       >
         Queries
       </NavLink>
+      <NavLink
+        to="login"
+        className={({ isActive }) =>
+          `${isActive ? "font-bold underline" : "hover:underline font-medium"}`
+        }
+      >
+        Login
+      </NavLink>
     </>
   );
 
@@ -29,7 +37,7 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-7 w-7"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -44,7 +52,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
@@ -56,14 +64,14 @@ const Navbar = () => {
               alt="RecoHub"
             />
           </div>
-          <h1 className="text-3xl font-bold">RecoHub</h1>
+          <h1 className="text-3xl font-bold font-montserrat">RecoHub</h1>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-10">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn">
+        <Link to="/login" className="btn hidden md:flex">
           Log in
         </Link>
       </div>
