@@ -2,21 +2,26 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const { createUser, setUser } = useContext(AuthContext);
 
   const handleRegister = (e) => {
+    e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const photourl = form.photourl.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    createUser(email, password).then((result) => {
-      const user = result.user;
-      setUser(user);
-    });
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        toast.success("Welcome to RecoHub");
+      })
+      .catch((error) => toast.error(`${error.code}`));
   };
 
   return (
