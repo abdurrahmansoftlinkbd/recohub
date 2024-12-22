@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const MainLayout = () => {
   return (
@@ -7,7 +8,12 @@ const MainLayout = () => {
       <nav className="bg-default py-3 text-white font-inter">
         <Navbar></Navbar>
       </nav>
-      <Outlet></Outlet>
+      <main>
+        <Outlet></Outlet>
+      </main>
+      <footer className="bg-default font-inter">
+        <Footer></Footer>
+      </footer>
     </div>
   );
 };
