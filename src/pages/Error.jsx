@@ -1,3 +1,4 @@
+import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Error = () => {
@@ -7,8 +8,11 @@ const Error = () => {
       <p className="text-2xl">Sorry, we were unable to find that page</p>
       <p className="mt-4">
         Start from{" "}
-        <Link to="/" className="underline font-medium hover:font-semibold">
-          home page
+        <Link
+          to="/"
+          className="ml-2 btn bg-gray-500 border-gray-500 text-white hover:bg-gray-400 hover:border-gray-400"
+        >
+          <FaArrowLeft /> Home
         </Link>
       </p>
     </div>
