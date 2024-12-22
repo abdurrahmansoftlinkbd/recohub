@@ -2,10 +2,18 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const handleRegister = (e) => {
+    const form = e.target;
+    const name = form.name.value;
+    const photourl = form.photourl.value;
+    const email = form.email.value;
+    const password = form.password.value;
+  };
+
   return (
     <div className="hero my-24 font-inter">
       <div className="card bg-base-100 w-full max-w-sm md:max-w-4xl shrink-0 shadow-2xl">
-        <form className="card-body">
+        <form onSubmit={handleRegister} className="card-body">
           <h2 className="uppercase text-center font-semibold text-3xl font-montserrat">
             Create account
           </h2>
