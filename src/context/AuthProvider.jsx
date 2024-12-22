@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import auth from "../firebase/firebase.init";
@@ -49,6 +50,12 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  const logOut = () => {
+    setLoading(true);
+    toast.success("See you again soon!");
+    return signOut(auth);
+  };
+
   const authInfo = {
     user,
     setUser,
@@ -56,6 +63,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     updateUserProfile,
     handleGoogleSignIn,
+    logOut,
   };
 
   return (
