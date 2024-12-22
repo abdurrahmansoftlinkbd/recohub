@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const Register = () => {
   return (
     <div className="hero my-24 font-inter">
-      <div className="card bg-base-100 w-[56rem] shrink-0 shadow-2xl">
+      <div className="card bg-base-100 w-full max-w-sm md:max-w-4xl shrink-0 shadow-2xl">
         <form className="card-body">
           <h2 className="uppercase text-center font-semibold text-3xl font-montserrat">
-            Create an account
+            Create account
           </h2>
-          <div className="flex gap-2">
+          <div className="md:flex md:gap-2">
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -35,7 +35,7 @@ const Register = () => {
               />
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="md:flex md:gap-2">
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Email</span>
