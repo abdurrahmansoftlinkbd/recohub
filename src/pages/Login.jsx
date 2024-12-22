@@ -1,3 +1,5 @@
+import { FcGoogle } from "react-icons/fc";
+
 const Login = () => {
   return (
     <div className="hero my-24 font-inter">
