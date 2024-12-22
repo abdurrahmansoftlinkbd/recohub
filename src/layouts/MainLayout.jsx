@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 const MainLayout = () => {
   return (
     <div>
-      <nav className="bg-default text-white font-inter">
+      <nav className="bg-default py-3 text-white font-inter">
         <Navbar></Navbar>
       </nav>
       <Outlet></Outlet>
