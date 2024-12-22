@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+
   const links = (
     <>
       <NavLink
@@ -18,14 +22,6 @@ const Navbar = () => {
         }
       >
         Queries
-      </NavLink>
-      <NavLink
-        to="login"
-        className={({ isActive }) =>
-          `${isActive ? "font-bold underline" : "hover:underline font-medium"}`
-        }
-      >
-        Login
       </NavLink>
     </>
   );
@@ -55,6 +51,72 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             {links}
+            {user && (
+              <>
+                <NavLink
+                  to="/recommendationsForMe"
+                  className={({ isActive }) =>
+                    `${
+                      isActive
+                        ? "font-bold underline"
+                        : "hover:underline font-medium"
+                    }`
+                  }
+                >
+                  Recommendations For Me
+                </NavLink>
+                <NavLink
+                  to="/myQueries"
+                  className={({ isActive }) =>
+                    `${
+                      isActive
+                        ? "font-bold underline"
+                        : "hover:underline font-medium"
+                    }`
+                  }
+                >
+                  My Queries
+                </NavLink>
+                <NavLink
+                  to="/myRecommendations"
+                  className={({ isActive }) =>
+                    `${
+                      isActive
+                        ? "font-bold underline"
+                        : "hover:underline font-medium"
+                    }`
+                  }
+                >
+                  My Recommendations
+                </NavLink>
+              </>
+            )}
+            {user ? (
+              <NavLink
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "font-bold underline"
+                      : "hover:underline font-medium"
+                  }`
+                }
+              >
+                Log out
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "font-bold underline"
+                      : "hover:underline font-medium"
+                  }`
+                }
+              >
+                Login
+              </NavLink>
+            )}
           </ul>
         </div>
         <Link className="flex items-center gap-2">
@@ -68,12 +130,58 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-10">{links}</ul>
+        <ul className="menu menu-horizontal px-1 gap-10">
+          {links}
+          {user && (
+            <>
+              <NavLink
+                to="/recommendationsForMe"
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "font-bold underline"
+                      : "hover:underline font-medium"
+                  }`
+                }
+              >
+                Recommendations For Me
+              </NavLink>
+              <NavLink
+                to="/myQueries"
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "font-bold underline"
+                      : "hover:underline font-medium"
+                  }`
+                }
+              >
+                My Queries
+              </NavLink>
+              <NavLink
+                to="/myRecommendations"
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "font-bold underline"
+                      : "hover:underline font-medium"
+                  }`
+                }
+              >
+                My Recommendations
+              </NavLink>
+            </>
+          )}
+        </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn hidden md:flex">
-          Log in
-        </Link>
+        {user ? (
+          <button className="btn hidden md:flex">Log out</button>
+        ) : (
+          <Link to="/login" className="btn hidden md:flex">
+            Log in
+          </Link>
+        )}
       </div>
     </div>
   );
