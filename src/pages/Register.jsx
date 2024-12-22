@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUser, setUser } = useContext(AuthContext);
+  const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -19,6 +21,16 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        updateUserProfile({
+          displayName: name,
+          photoURL: photourl,
+        })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((error) => {
+            toast.error(`Unable to update profile. ${error}`);
+          });
         toast.success("Welcome to RecoHub");
       })
       .catch((error) => toast.error(`${error.code}`));
