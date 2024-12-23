@@ -3,7 +3,7 @@ import { Fade } from "react-awesome-reveal";
 const Accordion = () => {
   return (
     <>
-      <div className="flex flex-col lg:flex-row justify-between items-center my-24">
+      <div className="flex flex-col lg:flex-row justify-between items-center my-24 lg:h-[620px] xl:h-[520px]">
         {/* image */}
         <div className="w-full lg:w-5/12">
           <Fade direction="left" triggerOnce={true}>
