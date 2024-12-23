@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 const Register = () => {
   const { createUser, setUser, updateUserProfile, handleGoogleSignIn } =
     useContext(AuthContext);
-
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -35,6 +34,7 @@ const Register = () => {
         toast.success("Welcome to RecoHub");
       })
       .catch((error) => toast.error(`${error.code}`));
+    form.reset();
   };
 
   return (

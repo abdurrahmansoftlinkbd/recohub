@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -24,7 +25,6 @@ const AuthProvider = ({ children }) => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        toast.success("Welcome back!");
       })
       .catch((error) => {
         toast.error(`${error.code}`);
@@ -34,6 +34,11 @@ const AuthProvider = ({ children }) => {
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const userLogin = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   const updateUserProfile = (updatedData) => {
@@ -63,6 +68,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     updateUserProfile,
     handleGoogleSignIn,
+    userLogin,
     logOut,
   };
 
