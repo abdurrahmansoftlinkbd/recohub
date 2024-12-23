@@ -1,17 +1,14 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 // import { useNavigate } from "react-router-dom";
-// import { toast } from "react-hot-toast";
 import AuthContext from "../context/AuthContext";
+import { format } from "date-fns";
 
 const AddQueries = () => {
   const { user } = useContext(AuthContext);
-  //   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
+  // const navigate = useNavigate();
 
   const handleAddQuery = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-
     const form = e.target;
     const queryData = {
       productName: form.productName.value,
@@ -22,33 +19,10 @@ const AddQueries = () => {
       userEmail: user?.email,
       userName: user?.displayName,
       userImage: user?.photoURL,
-      timestamp: new Date().toISOString(),
+      currentDateAndTime: format(new Date(), "PPpp"),
       recommendationCount: 0,
     };
     console.log(queryData);
-
-    // try {
-    //   const response = await fetch("your-api-endpoint/queries", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    //     },
-    //     body: JSON.stringify(queryData),
-    //   });
-
-    //   if (response.ok) {
-    //     toast.success("Query added successfully!");
-    //     navigate("/my-queries");
-    //   } else {
-    //     throw new Error("Failed to add query");
-    //   }
-    // } catch (error) {
-    //   toast.error("Error adding query");
-    //   console.error(error);
-    // } finally {
-    //   setIsLoading(false);
-    // }
   };
 
   return (
@@ -113,7 +87,7 @@ const AddQueries = () => {
                   type="url"
                   name="productImage"
                   required
-                  className="input input-bordered focus:input-primary"
+                  className="input input-bordered"
                   placeholder="Enter image URL"
                 />
               </div>
@@ -129,7 +103,7 @@ const AddQueries = () => {
                   type="text"
                   name="queryTitle"
                   required
-                  className="input input-bordered focus:input-primary"
+                  className="input input-bordered"
                   placeholder="Is there any better product that gives me the same quality?"
                 />
               </div>
@@ -145,7 +119,7 @@ const AddQueries = () => {
               <textarea
                 name="boycottReason"
                 required
-                className="textarea textarea-bordered h-32 focus:textarea-primary"
+                className="textarea textarea-bordered h-32"
                 placeholder="Explain why you're looking for alternatives..."
               />
             </div>
@@ -153,12 +127,9 @@ const AddQueries = () => {
             <div className="form-control mt-8">
               <button
                 type="submit"
-                className={`btn text-white bg-default border-default hover:bg-light hover:border-light  w-full ${
-                  isLoading ? "loading" : ""
-                }`}
-                disabled={isLoading}
+                className="btn text-white bg-default border-default hover:bg-light hover:border-light  w-full"
               >
-                {isLoading ? "Adding Query..." : "Add Query"}
+                Add Query
               </button>
             </div>
           </form>
