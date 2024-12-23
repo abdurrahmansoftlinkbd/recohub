@@ -5,8 +5,18 @@ const Footer = () => {
     <>
       <footer className="footer text-white p-10">
         <aside>
-          <Link to="/" className="text-4xl font-montserrat font-bold">
-            RecoHub
+          <Link
+            to="/"
+            className="text-4xl font-montserrat font-bold flex items-center"
+          >
+            <div className="w-12">
+              <img
+                src="https://i.ibb.co.com/PG005Hk/recommendation.png"
+                alt="logo"
+                className="w-full"
+              />
+            </div>
+            <h1>RecoHub</h1>
           </Link>
           <p className="mt-2 w-3/4">
             Discover, Query, and Recommend the Best Products
