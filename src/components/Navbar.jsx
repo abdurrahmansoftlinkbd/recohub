@@ -164,15 +164,48 @@ const Navbar = () => {
           )}
         </ul>
       </div>
-      <div className="navbar-end">
-        {user ? (
+      <div className="navbar-end gap-4">
+        {user && user?.email ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-14 rounded-full">
+                <img
+                  referrerPolicy="no-referrer"
+                  title={user?.displayName}
+                  src={user?.photoURL}
+                  className="w-full"
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow text-zinc-950"
+            >
+              <li>
+                <a className="justify-between">{user?.displayName}</a>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
+        {user && user?.email ? (
           <button onClick={logOut} className="btn hidden md:flex">
             Log out
           </button>
         ) : (
-          <Link to="/login" className="btn hidden md:flex">
-            Log in
-          </Link>
+          <>
+            <Link to="/login" className="btn hidden md:flex">
+              Log in
+            </Link>
+            <Link to="/register" className="btn hidden md:flex">
+              Register
+            </Link>
+          </>
         )}
       </div>
     </div>
