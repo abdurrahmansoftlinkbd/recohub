@@ -94,7 +94,10 @@ const Footer = () => {
         <aside>
           <p>
             Copyright © {new Date().getFullYear()} - All right reserved by
-            <Link className="ml-1 text-white hover:underline" to="/">
+            <Link
+              className="ml-1 text-white font-montserrat hover:underline"
+              to="/"
+            >
               RecoHub
             </Link>
           </p>
