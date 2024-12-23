@@ -2,6 +2,8 @@ import { useContext } from "react";
 // import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { format } from "date-fns";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddQueries = () => {
   const { user } = useContext(AuthContext);
@@ -23,6 +25,18 @@ const AddQueries = () => {
       recommendationCount: 0,
     };
     console.log(queryData);
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/queries",
+        queryData
+      );
+      form.reset();
+      toast.success("Query added successfully!");
+      console.log(data);
+    } catch (error) {
+      toast.error(error?.message || "Something went wrong!");
+    }
   };
 
   return (
