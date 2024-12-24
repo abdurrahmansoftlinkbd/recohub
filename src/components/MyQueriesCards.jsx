@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const QueryCard = ({ query }) => {
+const MyQueriesCards = ({ query }) => {
   const {
     _id,
     productName,
@@ -23,14 +23,10 @@ const QueryCard = ({ query }) => {
         />
       </figure>
       <div className="card-body">
-        <div className="flex justify-between items-center">
-          <div>
-            <h2 className="card-title font-montserrat text-xl">
-              {productName}
-            </h2>
-            <p className="text-sm text-gray-500">{productBrand}</p>
-          </div>
-          <span className="text-sm text-gray-500">{currentDateAndTime}</span>
+        <div>
+          <h2 className="card-title font-montserrat text-xl">{productName}</h2>
+          <p className="text-sm text-gray-500">{productBrand}</p>
+          <p className="text-xs text-gray-500">Posted: {currentDateAndTime}</p>
         </div>
         <h3 className="font-semibold font-montserrat text-lg mt-2">
           {queryTitle}
@@ -49,7 +45,7 @@ const QueryCard = ({ query }) => {
         {/* Action Buttons */}
         <div className="card-actions justify-center mt-4">
           <Link
-            to={`/query/${_id}`}
+            to={`/queries/${_id}`}
             className="btn text-white bg-default border-default hover:bg-light hover:border-light btn-sm"
           >
             View Details
@@ -72,8 +68,8 @@ const QueryCard = ({ query }) => {
   );
 };
 
-QueryCard.propTypes = {
+MyQueriesCards.propTypes = {
   query: PropTypes.object,
 };
 
-export default QueryCard;
+export default MyQueriesCards;

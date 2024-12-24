@@ -1,5 +1,5 @@
 import { useContext } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import { format } from "date-fns";
 import axios from "axios";
@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const AddQueries = () => {
   const { user } = useContext(AuthContext);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleAddQuery = async (e) => {
     e.preventDefault();
@@ -24,40 +24,32 @@ const AddQueries = () => {
       currentDateAndTime: format(new Date(), "PPpp"),
       recommendationCount: 0,
     };
-    console.log(queryData);
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/queries",
-        queryData
-      );
+      await axios.post("http://localhost:5000/queries", queryData);
       form.reset();
       toast.success("Query added successfully!");
-      console.log(data);
+      navigate("/myQueries");
     } catch (error) {
-      toast.error(error?.message || "Something went wrong!");
+      toast.error(error?.message);
     }
   };
 
   return (
     <div className="bg-gray-50 font-inter py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-sm md:max-w-4xl mx-auto">
-        {/* Header Section */}
         <div className="text-center mb-8">
           <h2 className="text-4xl font-bold font-montserrat text-zinc-950 uppercase">
-            Add New <span className="text-default">Query</span>
+            Add Your <span className="text-default">Query</span>
           </h2>
           <p className="mt-2 text-gray-600">
             Share your product experience and get recommendations from the
             community
           </p>
         </div>
-        {/* Form Section */}
         <div className="bg-white shadow-lg rounded-lg p-6 md:p-8">
           <form onSubmit={handleAddQuery} className="space-y-6">
-            {/* 1st row */}
             <div className="md:flex md:gap-2">
-              {/* Product Name */}
               <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text text-lg font-montserrat font-semibold">
@@ -72,7 +64,6 @@ const AddQueries = () => {
                   placeholder="Enter product name"
                 />
               </div>
-              {/* Product Brand */}
               <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text text-lg font-montserrat font-semibold">
@@ -88,9 +79,7 @@ const AddQueries = () => {
                 />
               </div>
             </div>
-            {/* 2nd row */}
             <div className="md:flex md:gap-2">
-              {/* Product Image URL */}
               <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text text-lg font-montserrat font-semibold">
@@ -105,8 +94,6 @@ const AddQueries = () => {
                   placeholder="Enter image URL"
                 />
               </div>
-
-              {/* Query Title */}
               <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text text-lg font-montserrat font-semibold">
@@ -118,12 +105,10 @@ const AddQueries = () => {
                   name="queryTitle"
                   required
                   className="input input-bordered"
-                  placeholder="Is there any better product that gives me the same quality?"
+                  placeholder="ex: Is there any better product that gives me the same quality?"
                 />
               </div>
             </div>
-
-            {/* Boycotting Reason */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-medium">
@@ -137,7 +122,6 @@ const AddQueries = () => {
                 placeholder="Explain why you're looking for alternatives..."
               />
             </div>
-            {/* Submit Button */}
             <div className="form-control mt-8">
               <button
                 type="submit"
@@ -148,7 +132,6 @@ const AddQueries = () => {
             </div>
           </form>
         </div>
-        {/* extra text */}
         <div className="mt-6 text-center text-sm text-gray-500">
           <p>
             Your query will be visible to the community, who can provide

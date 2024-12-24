@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import QueryCard from "../components/QueryCard";
+import MyQueriesCards from "../components/MyQueriesCards";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import { IoGridOutline } from "react-icons/io5";
 import { CiGrid2H } from "react-icons/ci";
@@ -28,10 +28,6 @@ const MyQueries = () => {
   useEffect(() => {
     fetchQueries();
   }, []);
-
-  // const sortedQueries = [...queries].sort(
-  //   (a, b) => parseISO(b.currentDateAndTime) - parseISO(a.currentDateAndTime)
-  // );
 
   // const handleDelete = async (id) => {
   //   const confirmed = document.getElementById("delete_modal");
@@ -132,7 +128,7 @@ const MyQueries = () => {
         ) : (
           <div className={`grid ${getGridClass()} gap-6 font-inter`}>
             {queries.map((query) => (
-              <QueryCard key={query._id} query={query}></QueryCard>
+              <MyQueriesCards key={query._id} query={query}></MyQueriesCards>
             ))}
           </div>
         )}
