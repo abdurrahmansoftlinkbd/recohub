@@ -118,7 +118,12 @@ const MyQueries = () => {
         ) : (
           <div className={`grid ${getGridClass()} gap-6 font-inter`}>
             {queries.map((query) => (
-              <MyQueriesCards key={query._id} query={query}></MyQueriesCards>
+              <MyQueriesCards
+                key={query._id}
+                query={query}
+                queries={queries}
+                setQueries={setQueries}
+              ></MyQueriesCards>
             ))}
           </div>
         )}

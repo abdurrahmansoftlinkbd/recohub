@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
+import axios from "axios";
 
-const MyQueriesCards = ({ query }) => {
+const MyQueriesCards = ({ query, queries, setQueries }) => {
   const {
     _id,
     productName,
@@ -12,6 +15,33 @@ const MyQueriesCards = ({ query }) => {
     boycottReason,
     recommendationCount,
   } = query;
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        try {
+          axios.delete(`http://localhost:5000/queries/${id}`);
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your query has been deleted.",
+            icon: "success",
+          });
+          const remainingQueries = queries.filter((query) => query._id !== id);
+          setQueries(remainingQueries);
+        } catch (err) {
+          toast.error(err.message);
+        }
+      }
+    });
+  };
 
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -51,13 +81,13 @@ const MyQueriesCards = ({ query }) => {
             View Details
           </Link>
           <Link
-            to={`/update-query/${_id}`}
+            to={`/updateQuery/${_id}`}
             className="btn text-white btn-success btn-sm"
           >
             Update
           </Link>
           <button
-            onClick={() => document.getElementById("delete_modal").showModal()}
+            onClick={() => handleDelete(_id)}
             className="btn text-white btn-error btn-sm"
           >
             Delete
@@ -70,6 +100,8 @@ const MyQueriesCards = ({ query }) => {
 
 MyQueriesCards.propTypes = {
   query: PropTypes.object,
+  queries: PropTypes.array,
+  setQueries: PropTypes.func,
 };
 
 export default MyQueriesCards;
