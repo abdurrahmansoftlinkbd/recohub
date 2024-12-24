@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -6,14 +6,18 @@ import MyQueriesCards from "../components/MyQueriesCards";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import { IoGridOutline } from "react-icons/io5";
 import { CiGrid2H } from "react-icons/ci";
+import AuthContext from "../context/AuthContext";
 
 const MyQueries = () => {
+  const { user } = useContext(AuthContext);
   const [layout, setLayout] = useState(3);
   const [queries, setQueries] = useState([]);
 
   const fetchQueries = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/queries");
+      const { data } = await axios.get(
+        `http://localhost:5000/myQueries/${user?.email}`
+      );
       const sortedQueries = data.sort((a, b) => {
         const dateA = new Date(a.currentDateAndTime);
         const dateB = new Date(b.currentDateAndTime);
@@ -27,20 +31,7 @@ const MyQueries = () => {
 
   useEffect(() => {
     fetchQueries();
-  }, []);
-
-  // const handleDelete = async (id) => {
-  //   const confirmed = document.getElementById("delete_modal");
-  //   if (confirmed) {
-  //     try {
-  //       await axios.delete(`http://localhost:5000/queries/${id}`);
-  //       setQueries(queries.filter((query) => query._id !== id));
-  //       toast.success("Query deleted successfully!");
-  //     } catch (error) {
-  //       toast.error(error);
-  //     }
-  //   }
-  // };
+  }, [user]);
 
   const getGridClass = () => {
     switch (layout) {
@@ -114,7 +105,6 @@ const MyQueries = () => {
             </button>
           </div>
         </div>
-
         {queries.length === 0 ? (
           <div className="text-center font-inter py-10">
             <h3 className="text-xl font-semibold mb-4">No Queries Found</h3>
@@ -132,28 +122,6 @@ const MyQueries = () => {
             ))}
           </div>
         )}
-
-        {/* Delete Confirmation Modal */}
-        {/* <dialog id="delete_modal" className="modal">
-          <div className="modal-box">
-            <h3 className="font-bold text-lg">Confirm Deletion</h3>
-            <p className="py-4">
-              Are you sure you want to delete this query? This action cannot be
-              undone.
-            </p>
-            <div className="modal-action">
-              <form method="dialog">
-                <button className="btn btn-outline mr-2">Cancel</button>
-                <button
-                  className="btn btn-error"
-                  // onClick={() => handleDelete(query._id)}
-                >
-                  Delete
-                </button>
-              </form>
-            </div>
-          </div>
-        </dialog> */}
       </div>
     </>
   );
