@@ -42,7 +42,7 @@ const RecommendationCard = ({ query }) => {
         </p>
         <div className="card-actions justify-end mt-4">
           <Link
-            to={`/query/${_id}`}
+            to={`/queries/${_id}`}
             className="btn text-white bg-default border-default hover:bg-light hover:border-light  btn-block"
           >
             Recommend Alternative
