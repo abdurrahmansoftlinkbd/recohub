@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const RecommendationCard = ({ query }) => {
+const QueriesCards = ({ query }) => {
   const {
     _id,
     productImage,
@@ -53,8 +53,8 @@ const RecommendationCard = ({ query }) => {
   );
 };
 
-RecommendationCard.propTypes = {
+QueriesCards.propTypes = {
   query: PropTypes.object,
 };
 
-export default RecommendationCard;
+export default QueriesCards;

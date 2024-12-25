@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { CiGrid2H } from "react-icons/ci";
 import { IoGridOutline } from "react-icons/io5";
 import { BsGrid3X3Gap } from "react-icons/bs";
-import RecommendationCard from "../components/RecommendationCard";
+import QueriesCards from "../components/QueriesCards";
 
 const Queries = () => {
   const [queries, setQueries] = useState([]);
@@ -82,10 +82,7 @@ const Queries = () => {
       ) : (
         <div className={`grid ${getGridClass()} gap-6`}>
           {queries.map((query) => (
-            <RecommendationCard
-              key={query._id}
-              query={query}
-            ></RecommendationCard>
+            <QueriesCards key={query._id} query={query}></QueriesCards>
           ))}
         </div>
       )}
