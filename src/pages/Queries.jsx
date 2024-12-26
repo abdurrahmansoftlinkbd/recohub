@@ -9,25 +9,26 @@ import QueriesCards from "../components/QueriesCards";
 const Queries = () => {
   const [queries, setQueries] = useState([]);
   const [layout, setLayout] = useState(3);
-
-  // Fetch all queries
-  const fetchQueries = async () => {
-    try {
-      const { data } = await axios.get("http://localhost:5000/queries");
-      const sortedQueries = data.sort((a, b) => {
-        const dateA = new Date(a.currentDateAndTime);
-        const dateB = new Date(b.currentDateAndTime);
-        return dateB - dateA;
-      });
-      setQueries(sortedQueries);
-    } catch (error) {
-      toast.error(error?.message);
-    }
-  };
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
+    const fetchQueries = async () => {
+      try {
+        const { data } = await axios.get(
+          `http://localhost:5000/queries?search=${search}`
+        );
+        const sortedQueries = data.sort((a, b) => {
+          const dateA = new Date(a.currentDateAndTime);
+          const dateB = new Date(b.currentDateAndTime);
+          return dateB - dateA;
+        });
+        setQueries(sortedQueries);
+      } catch (error) {
+        toast.error(error?.message);
+      }
+    };
     fetchQueries();
-  }, []);
+  }, [search]);
 
   const getGridClass = () => {
     switch (layout) {
@@ -47,7 +48,15 @@ const Queries = () => {
       <h2 className="text-default text-center text-5xl uppercase font-bold font-montserrat mt-2 mb-8">
         Queries
       </h2>
-      <div className="flex justify-end items-center mb-6">
+      {/* search and gridBtns */}
+      <div className="flex justify-between items-center mb-6">
+        <input
+          type="text"
+          placeholder="Search by product name..."
+          className="input input-bordered w-full max-w-md bg-white border-gray-300"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
         <div className="flex gap-2">
           <button
             onClick={() => setLayout(1)}
@@ -75,6 +84,7 @@ const Queries = () => {
           </button>
         </div>
       </div>
+      {/* queries */}
       {queries.length === 0 ? (
         <div className="text-center py-10">
           <h3 className="text-xl font-semibold mb-4">No Queries Available</h3>
