@@ -14,7 +14,6 @@ Check out the live project: [RecoHub](https://b10-a11-product-recommendation.web
 - Real-time updates and notifications
 - Responsive design for all devices
 - Search functionality
-- Protected routes with JWT authentication
 
 ## Technologies Used
 
