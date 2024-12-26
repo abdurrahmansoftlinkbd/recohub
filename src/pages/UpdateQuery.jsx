@@ -11,7 +11,9 @@ const UpdateQuery = () => {
 
   const fetchQuery = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/queries/${_id}`);
+      const { data } = await axios.get(
+        `https://b10-a11-product-recommendation-system-server.vercel.app/queries/${_id}`
+      );
       setQuery(data);
     } catch (error) {
       toast.error(error.message);
@@ -40,7 +42,10 @@ const UpdateQuery = () => {
     };
 
     try {
-      await axios.put(`http://localhost:5000/queries/${_id}`, updatedData);
+      await axios.put(
+        `https://b10-a11-product-recommendation-system-server.vercel.app/queries/${_id}`,
+        updatedData
+      );
       form.reset();
       toast.success("Query updated successfully!");
       navigate("/myQueries");

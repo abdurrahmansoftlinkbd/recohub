@@ -9,7 +9,9 @@ const RecentQueries = () => {
 
   const fetchRecentQueries = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/queries");
+      const { data } = await axios.get(
+        "https://b10-a11-product-recommendation-system-server.vercel.app/queries"
+      );
       const sortedQueries = data.sort((a, b) => {
         const dateA = new Date(a.currentDateAndTime);
         const dateB = new Date(b.currentDateAndTime);

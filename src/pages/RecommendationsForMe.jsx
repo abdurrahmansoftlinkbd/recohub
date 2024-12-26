@@ -13,10 +13,10 @@ const RecommendationsForMe = () => {
     const fetchData = async () => {
       try {
         const recommendationsRes = await axios.get(
-          `http://localhost:5000/recommendations`
+          `https://b10-a11-product-recommendation-system-server.vercel.app/recommendations`
         );
         const myQueriesRes = await axios.get(
-          `http://localhost:5000/myQueries/${user?.email}`
+          `https://b10-a11-product-recommendation-system-server.vercel.app/myQueries/${user?.email}`
         );
 
         const myQueryIds = myQueriesRes.data.map((query) => query._id);

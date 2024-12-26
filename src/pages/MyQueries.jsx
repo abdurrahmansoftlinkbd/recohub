@@ -16,7 +16,7 @@ const MyQueries = () => {
   const fetchQueries = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/myQueries/${user?.email}`
+        `https://b10-a11-product-recommendation-system-server.vercel.app/myQueries/${user?.email}`
       );
       const sortedQueries = data.sort((a, b) => {
         const dateA = new Date(a.currentDateAndTime);

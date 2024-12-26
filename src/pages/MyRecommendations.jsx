@@ -12,7 +12,7 @@ const MyRecommendations = () => {
   const fetchRecommendations = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/myRecommendations/${user?.email}`
+        `https://b10-a11-product-recommendation-system-server.vercel.app/myRecommendations/${user?.email}`
       );
       setRecommendations(data);
     } catch (error) {
@@ -38,7 +38,7 @@ const MyRecommendations = () => {
         if (result.isConfirmed) {
           try {
             axios.delete(
-              `http://localhost:5000/recommendations/${recommendationId}`
+              `https://b10-a11-product-recommendation-system-server.vercel.app/recommendations/${recommendationId}`
             );
             // await fetchRecommendations();
             Swal.fire({

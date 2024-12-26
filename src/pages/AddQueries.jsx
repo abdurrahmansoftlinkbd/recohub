@@ -26,7 +26,10 @@ const AddQueries = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/queries", queryData);
+      await axios.post(
+        "https://b10-a11-product-recommendation-system-server.vercel.app/queries",
+        queryData
+      );
       form.reset();
       toast.success("Query added successfully!");
       navigate("/myQueries");

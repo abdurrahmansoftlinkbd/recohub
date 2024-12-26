@@ -39,7 +39,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/queries/${params.id}`),
+          fetch(
+            `https://b10-a11-product-recommendation-system-server.vercel.app/queries/${params.id}`
+          ),
       },
       {
         path: "/updateQuery/:id",
@@ -49,7 +51,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/queries/${params.id}`),
+          fetch(
+            `https://b10-a11-product-recommendation-system-server.vercel.app/queries/${params.id}`
+          ),
       },
       {
         path: "/myQueries",

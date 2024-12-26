@@ -14,7 +14,9 @@ const QueryDetails = () => {
 
   const fetchQueryDetails = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/queries/${_id}`);
+      const { data } = await axios.get(
+        `https://b10-a11-product-recommendation-system-server.vercel.app/queries/${_id}`
+      );
       setQuery(data);
     } catch (error) {
       toast.error(error.message);
@@ -24,7 +26,7 @@ const QueryDetails = () => {
   const fetchRecommendations = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/recommendations/${_id}`
+        `https://b10-a11-product-recommendation-system-server.vercel.app/recommendations/${_id}`
       );
       setRecommendations(data);
     } catch (error) {
@@ -61,7 +63,7 @@ const QueryDetails = () => {
         currentDateAndTime: format(new Date(), "PPpp"),
       };
       await axios.post(
-        "http://localhost:5000/recommendations",
+        "https://b10-a11-product-recommendation-system-server.vercel.app/recommendations",
         recommendationData
       );
       fetchQueryDetails();

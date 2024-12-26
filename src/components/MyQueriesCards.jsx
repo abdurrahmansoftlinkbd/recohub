@@ -28,7 +28,9 @@ const MyQueriesCards = ({ query, queries, setQueries }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         try {
-          axios.delete(`http://localhost:5000/queries/${id}`);
+          axios.delete(
+            `https://b10-a11-product-recommendation-system-server.vercel.app/queries/${id}`
+          );
           Swal.fire({
             title: "Deleted!",
             text: "Your query has been deleted.",
