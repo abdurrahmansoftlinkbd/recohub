@@ -24,7 +24,7 @@ const QueryDetails = () => {
   const fetchRecommendations = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/recommendations/`
+        `http://localhost:5000/recommendations/${_id}`
       );
       setRecommendations(data);
     } catch (error) {
@@ -70,11 +70,13 @@ const QueryDetails = () => {
 
       form.reset();
       toast.success("Recommendation added successfully!");
-      navigate("/queries");
+      navigate("/myRecommendations");
     } catch (error) {
       toast.error(error?.response?.data);
     }
   };
+
+  // console.log(query._id, _id);
 
   return (
     <div className="container w-11/12 mx-auto my-8 font-inter">
