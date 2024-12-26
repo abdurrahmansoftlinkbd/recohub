@@ -22,31 +22,27 @@ const RecentQueriesCards = ({ query }) => {
           className="rounded-xl h-48 w-full object-cover"
         />
       </figure>
-
       <div className="card-body">
         <div className="flex items-center gap-2 mb-2">
           <img
+            referrerPolicy="no-referrer"
             src={userImage}
             alt={userName}
             className="w-8 h-8 rounded-full"
           />
           <span className="font-medium">{userName}</span>
         </div>
-
         <h3 className="card-title font-bold font-montserrat text-lg">
           {queryTitle}
         </h3>
-
         <div className="flex items-center gap-2 text-sm text-gray-500 mt-2">
           <Clock className="w-4 h-4" />
           <span>{currentDateAndTime}</span>
         </div>
-
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <Users className="w-4 h-4" />
           <span>{recommendationCount} recommendations</span>
         </div>
-
         <div className="card-actions justify-center mt-4">
           <Link
             to={`/queries/${_id}`}

@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 import auth from "../firebase/firebase.init";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -47,6 +48,14 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
+        axios
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then((res) => console.log(res.data));
+      }
+
+      // put in right place
       setLoading(false);
     });
     return () => {
