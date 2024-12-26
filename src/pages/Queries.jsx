@@ -49,7 +49,7 @@ const Queries = () => {
         Queries
       </h2>
       {/* search and gridBtns */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between gap-2 items-center mb-6">
         <input
           type="text"
           placeholder="Search by product name..."
