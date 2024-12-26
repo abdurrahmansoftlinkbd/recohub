@@ -58,7 +58,7 @@ const RecommendationsForMe = () => {
           <table className="table w-full">
             <thead>
               <tr className="bg-gray-100">
-                <th className="px-4 py-3 text-left">Original Query</th>
+                <th className="px-4 py-3 text-left">My Queries</th>
                 <th className="px-4 py-3">Recommendations For Me</th>
                 <th className="px-4 py-3">Date</th>
                 <th className="px-4 py-3 text-center">Actions</th>
