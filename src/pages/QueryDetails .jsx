@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { format } from "date-fns";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -7,7 +7,7 @@ import AuthContext from "../context/AuthContext";
 
 const QueryDetails = () => {
   const { _id } = useLoaderData();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [query, setQuery] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
@@ -68,7 +68,7 @@ const QueryDetails = () => {
       fetchRecommendations();
       form.reset();
       toast.success("Recommendation added successfully!");
-      navigate("/myRecommendations");
+      // navigate("/myRecommendations");
     } catch (error) {
       toast.error(error?.response?.data);
     }
