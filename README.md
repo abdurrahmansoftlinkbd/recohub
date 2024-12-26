@@ -4,7 +4,7 @@ A community-driven product recommendation platform where users can share, discov
 
 ## Live URL
 
-Check out the live project: [RecoHub](your-live-site-link)
+Check out the live project: [RecoHub](https://b10-a11-product-recommendation.web.app)
 
 ## Key Features
 
