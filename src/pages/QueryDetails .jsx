@@ -64,10 +64,8 @@ const QueryDetails = () => {
         "http://localhost:5000/recommendations",
         recommendationData
       );
-
       fetchQueryDetails();
       fetchRecommendations();
-
       form.reset();
       toast.success("Recommendation added successfully!");
       navigate("/myRecommendations");
@@ -76,10 +74,9 @@ const QueryDetails = () => {
     }
   };
 
-  // console.log(query._id, _id);
-
   return (
     <div className="container w-11/12 mx-auto my-8 font-inter">
+      {/* queryDetails */}
       <div className="card bg-base-100 shadow-xl mb-8">
         <div className="card-body">
           <div className="flex items-center gap-4 mb-6">
@@ -125,6 +122,7 @@ const QueryDetails = () => {
         </div>
       </div>
 
+      {/* allRecommendations */}
       {recommendations.length > 0 ? (
         <div className="card bg-base-100 mb-8 shadow-xl">
           <div className="card-body">
@@ -150,7 +148,6 @@ const QueryDetails = () => {
                       </p>
                     </div>
                   </div>
-
                   <h3 className="font-bold text-lg mb-2">
                     {recommendation.recommendationTitle}
                   </h3>
@@ -178,6 +175,7 @@ const QueryDetails = () => {
         ""
       )}
 
+      {/* recommendationForm */}
       {user?.email !== query?.userEmail ? (
         <div className="card bg-base-100 shadow-xl mb-8">
           <div className="card-body">
@@ -213,7 +211,6 @@ const QueryDetails = () => {
                   />
                 </div>
               </div>
-
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-bold font-montserrat">
@@ -227,7 +224,6 @@ const QueryDetails = () => {
                   required
                 />
               </div>
-
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-bold font-montserrat">
@@ -240,7 +236,6 @@ const QueryDetails = () => {
                   required
                 ></textarea>
               </div>
-
               <button
                 type="submit"
                 className="btn btn-block text-white bg-default border-default hover:bg-light hover:border-light font-montserrat font-bold"
