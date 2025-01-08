@@ -62,10 +62,10 @@ npm install
 Create a .env.local file in the root directory and add the following environment variables:
 
 ```bash
-VITE_apiKey=<Your Firebase API Key>
-VITE_authDomain=<Your Firebase Auth Domain>
-VITE_projectId=<Your Firebase Project ID>
-VITE_storageBucket=<Your Firebase Storage Bucket>
-VITE_messagingSenderId=<Your Firebase Messaging Sender ID>
-VITE_appId=<Your Firebase App ID>
+VITE_apiKey=Your Firebase API Key
+VITE_authDomain=Your Firebase Auth Domain
+VITE_projectId=Your Firebase Project ID
+VITE_storageBucket=Your Firebase Storage Bucket
+VITE_messagingSenderId=Your Firebase Messaging Sender ID
+VITE_appId=Your Firebase App ID
 ```
