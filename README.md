@@ -25,18 +25,31 @@ Check out the live project: [RecoHub](https://b10-a11-product-recommendation.web
 - Tailwind CSS
 - DaisyUI
 
-## Packages Used
+## Dependencies
 
-- axios - HTTP client for API requests
-- date-fns - Modern JavaScript date utility library
-- lucide-react - Beautiful and consistent icons
-- prop-types - Runtime type checking for React props
-- react-awesome-reveal - Animation components
-- react-hot-toast - Toast notifications
-- react-icons - Popular icon libraries
-- react-router-dom - Routing for React applications
-- sweetalert2 - Beautiful, responsive popups
-- swiper - Modern touch slider
+The following dependencies were used in this project:
+
+```json
+"dependencies": {
+    "@emotion/react": "^11.14.0",
+    "axios": "^1.7.9",
+    "date-fns": "^4.1.0",
+    "firebase": "^11.1.0",
+    "localforage": "^1.10.0",
+    "lucide": "^0.469.0",
+    "lucide-react": "^0.469.0",
+    "match-sorter": "^8.0.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-awesome-reveal": "^4.3.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.4.0",
+    "react-router-dom": "^7.1.0",
+    "sweetalert2": "^11.15.3",
+    "swiper": "^11.1.15"
+}
+```
 
 ---
 
