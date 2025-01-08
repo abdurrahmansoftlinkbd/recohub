@@ -37,3 +37,16 @@ Check out the live project: [RecoHub](https://b10-a11-product-recommendation.web
 - react-router-dom - Routing for React applications
 - sweetalert2 - Beautiful, responsive popups
 - swiper - Modern touch slider
+
+---
+
+## How to Run the Project Locally
+
+Follow the steps below to set up and run the project on your local machine:
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/abdurrahmansoftlinkbd/recohub.git
+cd recohub
+```
