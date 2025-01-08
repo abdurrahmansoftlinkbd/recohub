@@ -69,3 +69,9 @@ VITE_storageBucket=Your Firebase Storage Bucket
 VITE_messagingSenderId=Your Firebase Messaging Sender ID
 VITE_appId=Your Firebase App ID
 ```
+
+### Step 4: Run the Project
+
+```bash
+npm run dev
+```
