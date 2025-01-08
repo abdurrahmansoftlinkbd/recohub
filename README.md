@@ -50,3 +50,9 @@ Follow the steps below to set up and run the project on your local machine:
 git clone https://github.com/abdurrahmansoftlinkbd/recohub.git
 cd recohub
 ```
+
+### Step 2: Install Dependencies
+
+```bash
+npm install
+```
