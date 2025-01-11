@@ -25,11 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/queries",
-        element: (
-          <PrivateRoute>
-            <Queries></Queries>
-          </PrivateRoute>
-        ),
+        element: <Queries></Queries>,
       },
       {
         path: "/queries/:id",
