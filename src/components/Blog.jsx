@@ -1,28 +1,24 @@
 import PropTypes from "prop-types";
-import { FaRegCommentAlt } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 
 const Blog = ({ blog }) => {
-  const { title, category, commentsCount, description, image } = blog;
+  const { title, category, image } = blog;
 
   return (
-    <div className="card card-compact w-full lg:w-80 xl:w-96 rounded-none p-0">
-      <figure>
+    <div className="card card-compact bg-base-100 shadow-xl w-full lg:w-72 xl:w-96">
+      <figure className="relative">
         <img src={image} alt={category} />
-      </figure>
-      <div className="card-body pt-2">
-        <div className="flex justify-between items-center">
-          <div className="badge bg-default text-white p-3">{category}</div>
-          <span className="flex items-center">
-            <FaRegCommentAlt className="mr-1 " /> {commentsCount} Comments
-          </span>
+        <div className="badge bg-default border-default text-white p-3 absolute bottom-4 left-5">
+          {category}
         </div>
-        <h2 className="card-title text-2xl font-semibold font-montserrat">
-          {title}
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title text-lg font-semibold font-montserrat">
+          {title.slice(0, 50)}...
         </h2>
-        <p title={description}>{description.substring(0, 180)}...</p>
         <div className="card-actions">
-          <button className="btn bg-default border-primary rounded-full text-white hover:bg-light hover:border-light">
-            Read More
+          <button className="btn btn-sm bg-default border-default rounded-lg text-white hover:bg-light hover:border-light">
+            Read More <FaArrowRight />
           </button>
         </div>
       </div>

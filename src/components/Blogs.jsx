@@ -12,8 +12,8 @@ const Blogs = () => {
 
   return (
     <div>
-      <h2 className="text-center text-6xl font-bold font-montserrat">
-        FROM <span className="text-default">BLOG</span>
+      <h2 className="text-center text-5xl font-bold font-montserrat uppercase">
+        From latest <span className="text-default">news</span>
       </h2>
       <div className="grid gap-y-7 grid-cols-1 md:grid-cols-2 md:gap-x-7 lg:grid-cols-3 mt-12">
         {blogs.map((blog, i) => (
