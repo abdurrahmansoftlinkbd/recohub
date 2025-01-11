@@ -17,7 +17,7 @@ const RecentQueries = () => {
         const dateB = new Date(b.currentDateAndTime);
         return dateB - dateA;
       });
-      setQueries(sortedQueries.slice(0, 6));
+      setQueries(sortedQueries.slice(0, 4));
     } catch (err) {
       toast.error(err.message);
     }
@@ -38,7 +38,7 @@ const RecentQueries = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {queries.map((query) => (
           <RecentQueriesCards
             key={query._id}

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Clock, Users, ExternalLink } from "lucide-react";
+import { Users, ExternalLink, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const RecentQueriesCards = ({ query }) => {
@@ -19,7 +19,7 @@ const RecentQueriesCards = ({ query }) => {
         <img
           src={productImage}
           alt={productName}
-          className="rounded-xl h-48 w-full object-cover"
+          className="rounded-xl h-44 w-full object-cover"
         />
       </figure>
       <div className="card-body">
@@ -30,10 +30,12 @@ const RecentQueriesCards = ({ query }) => {
             alt={userName}
             className="w-8 h-8 rounded-full"
           />
-          <span className="font-medium">{userName}</span>
+          <span className="font-medium">
+            {userName.length > 15 ? `${userName.slice(0, 12)}...` : userName}
+          </span>
         </div>
         <h3 className="card-title font-bold font-montserrat text-lg">
-          {queryTitle}
+          {queryTitle.slice(0, 20)}...
         </h3>
         <div className="flex items-center gap-2 text-sm text-gray-500 mt-2">
           <Clock className="w-4 h-4" />
