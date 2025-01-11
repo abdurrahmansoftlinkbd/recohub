@@ -1,0 +1,29 @@
+[
+  {
+    "reviewId": "R001",
+    "userImage": "https://i.ibb.co.com/YyhXvWQ/persion-3.webp",
+    "userName": "Daniel",
+    "reviewTitle": "Excellent alternative to high-end brands!",
+    "reviewDescription": "I switched to this product after seeing glowing reviews, and it’s been a game-changer! It delivers the same quality as premium brands at a fraction of the price.",
+    "productBrand": "Cumilla",
+    "rating": 4.8
+  },
+  {
+    "reviewId": "R002",
+    "userImage": "https://i.ibb.co.com/dBntxym/persion-1.webp",
+    "userName": "Michael Smith",
+    "reviewTitle": "Surprisingly effective and budget-friendly",
+    "reviewDescription": "I was skeptical at first, but this product exceeded my expectations. The quality and performance are on par with leading competitors. A solid option for anyone wanting a reliable alternative.",
+    "productBrand": "Chittagong",
+    "rating": 4.5
+  },
+  {
+    "reviewId": "R003",
+    "userImage": "https://i.ibb.co.com/wr1WPFR/avatar-8.webp",
+    "userName": "James",
+    "reviewTitle": "Amazing product, worth every amount!",
+    "reviewDescription": "This product is fantastic! I love how it combines affordability with top-notch features. It’s become a staple in my routine, and I’ve recommended it to all my friends.",
+    "productBrand": "Dhaka",
+    "rating": 4.7
+  }
+]
