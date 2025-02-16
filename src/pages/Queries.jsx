@@ -77,8 +77,8 @@ const Queries = () => {
       <h2 className="text-default text-center text-5xl uppercase font-bold font-montserrat mt-2 mb-8">
         Queries
       </h2>
-      <div className="flex justify-between gap-2 items-center mb-6">
-        <div className="flex gap-2 items-center flex-1">
+      <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-2 items-stretch md:items-center mb-6">
+        <div className="flex gap-2 flex-1">
           <input
             type="text"
             placeholder="Search by product name..."
@@ -102,7 +102,7 @@ const Queries = () => {
             <FaSort className="text-xl"></FaSort>
           </button>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-end">
           <button
             onClick={() => setLayout(1)}
             className={`btn bg-light border-light text-white hover:bg-dark hover:border-dark ${
