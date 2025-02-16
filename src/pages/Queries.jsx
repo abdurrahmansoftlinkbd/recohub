@@ -5,30 +5,59 @@ import { CiGrid2H } from "react-icons/ci";
 import { IoGridOutline } from "react-icons/io5";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import QueriesCards from "../components/QueriesCards";
+import { FaSort } from "react-icons/fa";
+import Loading from "./Loading";
 
 const Queries = () => {
   const [queries, setQueries] = useState([]);
   const [layout, setLayout] = useState(3);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [sortByRecommendation, setSortByRecommendation] = useState(false);
+
+  const sortByDate = (data) => {
+    return [...data].sort((a, b) => {
+      const dateA = new Date(a.currentDateAndTime);
+      const dateB = new Date(b.currentDateAndTime);
+      return dateB - dateA;
+    });
+  };
+
+  const sortByRecommendationCount = (data) => {
+    return [...data].sort(
+      (a, b) => b.recommendationCount - a.recommendationCount
+    );
+  };
 
   useEffect(() => {
     const fetchQueries = async () => {
+      setLoading(true);
       try {
         const { data } = await axios.get(
           `https://b10-a11-product-recommendation-system-server.vercel.app/queries?search=${search}`
         );
-        const sortedQueries = data.sort((a, b) => {
-          const dateA = new Date(a.currentDateAndTime);
-          const dateB = new Date(b.currentDateAndTime);
-          return dateB - dateA;
-        });
-        setQueries(sortedQueries);
+        const sortedData = sortByDate(data);
+        setQueries(sortedData);
       } catch (error) {
         toast.error(error?.message);
+      } finally {
+        setLoading(false);
       }
     };
     fetchQueries();
   }, [search]);
+
+  useEffect(() => {
+    if (sortByRecommendation) {
+      setQueries((prev) => sortByRecommendationCount(prev));
+    } else {
+      setQueries((prev) => sortByDate(prev));
+    }
+  }, [sortByRecommendation]);
+
+  const toggleSort = () => {
+    setSortByRecommendation((prev) => !prev);
+  };
 
   const getGridClass = () => {
     switch (layout) {
@@ -44,19 +73,35 @@ const Queries = () => {
   };
 
   return (
-    <div className="container w-11/12 mx-auto my-8 font-inter">
+    <div className="container w-11/12 mx-auto my-16 font-inter">
       <h2 className="text-default text-center text-5xl uppercase font-bold font-montserrat mt-2 mb-8">
         Queries
       </h2>
-      {/* search and gridBtns */}
       <div className="flex justify-between gap-2 items-center mb-6">
-        <input
-          type="text"
-          placeholder="Search by product name..."
-          className="input input-bordered w-full max-w-md bg-white border-gray-300"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="flex gap-2 items-center flex-1">
+          <input
+            type="text"
+            placeholder="Search by product name..."
+            className="input input-bordered w-full max-w-md bg-white border-gray-300"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button
+            onClick={toggleSort}
+            className={`btn ${
+              sortByRecommendation
+                ? "bg-default border-default"
+                : "bg-light border-light"
+            } text-white hover:bg-dark hover:border-dark`}
+            title={
+              sortByRecommendation
+                ? "Sort by Date"
+                : "Sort by Recommendation Count"
+            }
+          >
+            <FaSort className="text-xl"></FaSort>
+          </button>
+        </div>
         <div className="flex gap-2">
           <button
             onClick={() => setLayout(1)}
@@ -84,8 +129,9 @@ const Queries = () => {
           </button>
         </div>
       </div>
-      {/* queries */}
-      {queries.length === 0 ? (
+      {loading ? (
+        <Loading></Loading>
+      ) : queries.length === 0 ? (
         <div className="text-center py-10">
           <h3 className="text-xl font-semibold mb-4">No Queries Available</h3>
         </div>
