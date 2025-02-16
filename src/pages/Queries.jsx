@@ -74,7 +74,7 @@ const Queries = () => {
 
   return (
     <div className="container w-11/12 mx-auto my-16 font-inter">
-      <h2 className="text-default text-center text-5xl uppercase font-bold font-montserrat mt-2 mb-8">
+      <h2 className="text-default text-center text-4xl md:text-5xl uppercase font-bold font-montserrat mt-2 mb-8">
         Queries
       </h2>
       <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-2 items-stretch md:items-center mb-6">
