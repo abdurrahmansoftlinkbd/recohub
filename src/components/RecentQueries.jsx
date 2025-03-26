@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import RecentQueriesCards from "./RecentQueriesCards";
 import { Link } from "react-router-dom";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const RecentQueries = () => {
   const [queries, setQueries] = useState([]);
@@ -49,9 +50,10 @@ const RecentQueries = () => {
       <div className="text-center mt-10">
         <Link
           to="/queries"
-          className="btn btn-lg text-white bg-default border-default hover:bg-light hover:border-light"
+          className="btn btn-md text-white bg-default border-default hover:bg-light hover:border-light"
+          target="_blank"
         >
-          Show All Queries
+          Show All Queries <FaExternalLinkAlt />
         </Link>
       </div>
     </section>

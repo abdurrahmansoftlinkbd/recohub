@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Users, ExternalLink, Clock } from "lucide-react";
+import { Users, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const RecentQueriesCards = ({ query }) => {
@@ -51,7 +51,7 @@ const RecentQueriesCards = ({ query }) => {
             className="btn bg-default text-white border-default hover:bg-light hover:border-light btn-sm gap-2"
           >
             View Details
-            <ExternalLink className="w-4 h-4" />
+            {/* <ExternalLink className="w-4 h-4" /> */}
           </Link>
         </div>
       </div>
