@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 const MainLayout = () => {
   return (
     <div>
-      <nav className="bg-default sticky top-0 z-10 py-3 text-white font-inter">
+      <nav className="bg-default sticky top-0 z-10 py-2 text-white font-inter">
         <Navbar></Navbar>
       </nav>
       <main>
