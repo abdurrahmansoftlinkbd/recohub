@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { FaArrowRight } from "react-icons/fa";
 
 const Slide = ({ image, text, desc, btn }) => {
   return (
@@ -9,7 +10,7 @@ const Slide = ({ image, text, desc, btn }) => {
         backgroundImage: `url(${image})`,
       }}
     >
-      <div className="relative w-full h-full bg-gray-900/70">
+      <div className="relative w-full h-full bg-gray-900/40">
         <div className="w-3/4 absolute top-[20%] left-16">
           <h1 className="text-3xl lg:text-6xl font-montserrat font-semibold text-white">
             {text}
@@ -20,7 +21,7 @@ const Slide = ({ image, text, desc, btn }) => {
               to="/queries"
               className="btn font-inter bg-default border-default text-white hover:bg-dark hover:border-dark mt-6"
             >
-              {btn}
+              {btn} <FaArrowRight />
             </Link>
           )}
         </div>
